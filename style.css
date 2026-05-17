@@ -1,33 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Meal Planner</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+body{
+text-align:center;
+}
 
-<nav>
-  <div class="logo">NutriSmart</div>
-  <div class="links">
-    <a href="index.html">Home</a>
-    <a href="analyse.html">Analyse</a>
-    <a href="meal.html">Meal Planner</a>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</nav>
+.btn{
+background:#1b5e20;
+color:white;
+padding:10px 20px;
+border-radius:10px;
+text-decoration:none;
+}
 
-<section class="box">
+.box{
+padding:40px;
+text-align:center;
+}
 
-<h1>Meal Planner</h1>
+input,textarea,button{
+margin:10px;
+padding:10px;
+width:60%;
+border-radius:10px;
+}
 
-<button onclick="generateMeal()">Generate Meal Plan</button>
+button{
+background:#1b5e20;
+color:white;
+border:none;
+}
 
-<div id="mealResult"></div>
+.grid{
+display:flex;
+justify-content:center;
+}
 
-</section>
-
-<script src="script.js"></script>
-</body>
-</html>
+.card{
+background:white;
+padding:20px;
+margin:10px;
+border-radius:15px;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
