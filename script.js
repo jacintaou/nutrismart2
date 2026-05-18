@@ -1,180 +1,134 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* =====================================================
+   NUTRISMART - MASTER SCRIPT (ALL PAGES)
+   ===================================================== */
 
 /* =========================
-   FOOD DATABASE (SIMPLE AI)
+   FOOD DATABASE
 ========================= */
 
 const foods = {
-"apple": {
-calories: 95,
-protein: 0.5,
-carbs: 25,
-fat: 0.3,
-rating: 9,
-swap: "Try berries or orange for similar sweetness with more antioxidants"
-},
+  Apple: {cal: 95, sugar: 19, fat: 0.3},
+  Banana: {cal: 105, sugar: 14, fat: 0.4},
+  Burger: {cal: 550, sugar: 9, fat: 30},
+  Pizza: {cal: 285, sugar: 5, fat: 12},
+  Fries: {cal: 365, sugar: 0, fat: 17},
+  Sushi: {cal: 200, sugar: 3, fat: 4},
+  Yogurt: {cal: 150, sugar: 12, fat: 4},
+  Salad: {cal: 120, sugar: 4, fat: 5},
+  Chocolate: {cal: 230, sugar: 25, fat: 13},
+  IceCream: {cal: 270, sugar: 28, fat: 14}
+};
 
-"burger": {
-calories: 550,
-protein: 25,
-carbs: 45,
-fat: 30,
-rating: 4,
-swap: "Try grilled chicken wrap or homemade lean beef burger"
-},
+/* =========================
+   FOOD ANALYSIS SYSTEM
+========================= */
 
-"chips": {
-calories: 300,
-protein: 3,
-carbs: 35,
-fat: 15,
-rating: 3,
-swap: "Try oven-baked sweet potato wedges"
-},
+function analyseFood() {
+  const food = document.getElementById("foodSelect").value;
+  const data = foods[food];
 
-"rice": {
-calories: 200,
-protein: 4,
-carbs: 45,
-fat: 1,
-rating: 7,
-swap: "Try brown rice for more fibre"
-},
+  // improved scoring algorithm
+  let score = 10 - Math.floor((data.cal + data.sugar * 2 + data.fat * 10) / 120);
+  if (score < 1) score = 1;
 
-"pizza": {
-calories: 285,
-protein: 12,
-carbs: 36,
-fat: 10,
-rating: 5,
-swap: "Try homemade veggie pizza with wholemeal base"
-},
+  let recommendation =
+    score < 6
+      ? "⚠ Health risk detected. Suggested swap: Salad, Yogurt, or Fruit."
+      : "✅ Balanced nutritional choice.";
 
-"chicken": {
-calories: 165,
-protein: 31,
-carbs: 0,
-fat: 3.6,
-rating: 9,
-swap: "Keep as is or grill instead of frying"
-},
-
-"salad": {
-calories: 120,
-protein: 3,
-carbs: 10,
-fat: 8,
-rating: 10,
-swap: "Already healthy — add olive oil or lean protein"
+  document.getElementById("result").innerHTML = `
+    <div class="card">
+      <h3>🍽 ${food}</h3>
+      <p>Calories: ${data.cal}</p>
+      <p>Sugar: ${data.sugar}g</p>
+      <p>Fat: ${data.fat}g</p>
+      <p>Health Score: <span class="${score > 6 ? "good" : "bad"}">${score}/10</span></p>
+      <p>${recommendation}</p>
+    </div>
+  `;
 }
 
-};
-
 /* =========================
-   FOOD ANALYSIS FUNCTION
+   CATEGORY POPUP SYSTEM
 ========================= */
 
-window.analyseFood = function () {
+function showCategory(type) {
+  let text = "";
 
-const input = document.getElementById("foodInput");
-const resultBox = document.getElementById("resultBox");
+  switch (type) {
+    case "fastfood":
+      text = "🍔 Fast food is energy-dense but low in nutrients. Frequent consumption increases health risks.";
+      break;
+    case "healthy":
+      text = "🥗 Healthy meals improve focus, energy levels, and long-term wellbeing.";
+      break;
+    case "snacks":
+      text = "🍫 Snacks are often high in sugar and should be consumed in moderation.";
+      break;
+    case "drinks":
+      text = "🥤 Sugary drinks contribute to hidden calorie intake and weight gain.";
+      break;
+  }
 
-if (!input || !resultBox) return;
+  const modal = document.getElementById("modal");
+  const modalText = document.getElementById("modalText");
 
-let food = input.value.toLowerCase().trim();
-
-if (!foods[food]) {
-resultBox.innerHTML = `
-<h3>Food not found</h3>
-<p>Try: apple, burger, chips, rice, pizza, chicken, salad</p>
-`;
-return;
+  modalText.innerHTML = `<h2>${text}</h2>`;
+  modal.style.display = "block";
 }
 
-let data = foods[food];
-
-resultBox.innerHTML = `
-<h2>${food.toUpperCase()}</h2>
-
-<div class="result-grid">
-
-<div class="card">🔥 Calories: ${data.calories}</div>
-<div class="card">💪 Protein: ${data.protein}g</div>
-<div class="card">🍞 Carbs: ${data.carbs}g</div>
-<div class="card">🧈 Fat: ${data.fat}g</div>
-
-</div>
-
-<h3>Health Rating: ${data.rating}/10</h3>
-
-<div class="rating-bar">
-<div class="fill" style="width:${data.rating * 10}%"></div>
-</div>
-
-<p class="swap">
-<strong>Healthier Swap:</strong> ${data.swap}
-</p>
-`;
-
-};
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
 
 /* =========================
-   MEAL PLAN GENERATOR
+   MEAL PLANNER SCORING
 ========================= */
 
-window.generateMeal = function () {
+function generateMealScore() {
+  return Math.floor(Math.random() * 4) + 6;
+}
 
-const meals = [
-"Grilled chicken + brown rice + salad",
-"Oatmeal with banana & honey",
-"Veggie wrap with hummus",
-"Salmon with sweet potato",
-"Greek yoghurt with berries",
-"Eggs with wholegrain toast"
-];
+/* (optional helper if you expand meal planner later) */
+function evaluateMeal(breakfast, lunch, dinner, snack) {
+  let score = generateMealScore();
 
-const output = document.getElementById("mealOutput");
+  let message =
+    score > 7
+      ? "Excellent balanced daily nutrition."
+      : "Try adding more whole foods and reducing processed items.";
 
-if (!output) return;
-
-const random = meals[Math.floor(Math.random() * meals.length)];
-
-output.innerHTML = `
-<h3>Your Meal Idea:</h3>
-<p>${random}</p>
-`;
-
-};
+  return { score, message };
+}
 
 /* =========================
-   SIMPLE ANIMATION EFFECTS
+   DASHBOARD VISUAL HELPERS
 ========================= */
 
-const cards = document.querySelectorAll(".feature-card, .quick-card");
-
-cards.forEach(card => {
-card.addEventListener("mouseover", () => {
-card.style.transform = "scale(1.03)";
-});
-
-card.addEventListener("mouseout", () => {
-card.style.transform = "scale(1)";
-});
-});
+function createBar(value, color) {
+  return `
+    <div class="bar" style="width:${value}%; background:${color};"></div>
+  `;
+}
 
 /* =========================
-   SMOOTH SCROLL
+   CONTACT FORM FEEDBACK
 ========================= */
 
-document.querySelectorAll("a[href^='#']").forEach(anchor => {
-anchor.addEventListener("click", function (e) {
-e.preventDefault();
+function submitForm() {
+  const msg = document.getElementById("responseMessage");
 
-document.querySelector(this.getAttribute("href")).scrollIntoView({
-behavior: "smooth"
-});
+  msg.innerHTML = "✅ Submission received. Our system will process your enquiry shortly.";
 
-});
-});
+  setTimeout(() => {
+    msg.innerHTML = "📩 Status: Awaiting review by NutriSmart support system.";
+  }, 2000);
+}
 
+/* =========================
+   PAGE LOAD ANIMATION BOOST
+========================= */
+
+window.addEventListener("load", () => {
+  document.body.style.opacity = "1";
 });
