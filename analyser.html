@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Food Analysis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+  <div class="logo">Nutri<span>Flow</span></div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="analyser.html">Analyse</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="mealplanner.html">Meal Plan</a>
+  </div>
+</div>
+
+<section class="section">
+
+  <h1>Food Analysis Engine</h1>
+
+  <div class="box">
+
+    <select id="foodSelect">
+      <option>Big Mac</option>
+      <option>Fries</option>
+      <option>Chicken Burger</option>
+      <option>Pizza</option>
+      <option>Salad</option>
+      <option>Protein Shake</option>
+    </select>
+
+    <button onclick="runAnalyse()">Analyse Food</button>
+
+    <div id="result" style="margin-top:20px;"></div>
+
+  </div>
+
+</section>
+
+<section class="section">
+  <h2>Why This Matters</h2>
+
+  <div class="card">
+    <p>
+      Many fast foods contain high levels of saturated fat, sodium, and refined carbohydrates.
+      This system helps users compare and identify healthier alternatives instantly.
+    </p>
+  </div>
+</section>
+
+<script src="script.js"></script>
+
+<script>
+function runAnalyse() {
+  let food = document.getElementById("foodSelect").value;
+  let d = foods[food];
+
+  let score = Math.max(1, 10 - Math.floor(d.cal / 100));
+
+  let swap = d.cal > 400 ? "Try grilled or baked alternatives" : "Already a balanced choice";
+
+  document.getElementById("result").innerHTML = `
+    <div class="card">
+      <h2>${food}</h2>
+      <p>Calories: ${d.cal}</p>
+      <p>Protein: ${d.pro}g</p>
+      <p>Carbs: ${d.carb}g</p>
+      <p>Fat: ${d.fat}g</p>
+
+      <h3>Health Score: ${score}/10</h3>
+      <p><b>Suggested Swap:</b> ${swap}</p>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
