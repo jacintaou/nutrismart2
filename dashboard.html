@@ -1,209 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Dashboard | NutriSmart</title>
-
+<title>Dashboard</title>
 <link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
 
-<div class="bg1"></div>
-<div class="bg2"></div>
-
-<!-- NAV -->
-
-<nav>
-
+<nav class="navbar">
 <div class="logo">NutriSmart</div>
-
 <div class="nav-links">
-
 <a href="index.html">Home</a>
 <a href="analyse.html">Analyse</a>
 <a href="meal.html">Meal Planner</a>
 <a href="dashboard.html">Dashboard</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
-
 </div>
-
 </nav>
 
-<!-- HEADER -->
-
-<section class="page-header">
-
+<header class="page-header">
 <h1>Nutrition Dashboard</h1>
+<p>Real-time simulated analytics</p>
+</header>
 
-<p>
-Visualise your dietary patterns and health insights through interactive analytics.
-</p>
+<section class="section grid">
 
-</section>
-
-<!-- STATS -->
-
-<section class="dashboard-stats">
-
-<div class="dash-card">
+<div class="stat">
 <h2>78%</h2>
-<p>Healthy Food Choices</p>
+<p>Healthy Score</p>
 </div>
 
-<div class="dash-card">
-<h2>2,450</h2>
-<p>Avg Daily Calories</p>
+<div class="stat">
+<h2>2450</h2>
+<p>Calories</p>
 </div>
 
-<div class="dash-card">
+<div class="stat">
 <h2>64g</h2>
-<p>Protein Intake</p>
-</div>
-
-<div class="dash-card">
-<h2>High</h2>
-<p>Nutrition Balance</p>
-</div>
-
-</section>
-
-<!-- CHART SECTION -->
-
-<section class="charts">
-
-<h2>Nutrition Overview</h2>
-
-<div class="chart-grid">
-
-<!-- SIMPLE BAR VISUAL (NO LIBRARY NEEDED) -->
-
-<div class="chart-box">
-
-<h3>Macronutrients</h3>
-
-<div class="bar">
-<div class="fill protein"></div>
 <p>Protein</p>
 </div>
 
-<div class="bar">
-<div class="fill carbs"></div>
-<p>Carbohydrates</p>
+</section>
+
+<section class="section grid">
+
+<div class="card">
+<h3>Insight</h3>
+<p>Protein intake is consistent across meals.</p>
 </div>
 
-<div class="bar">
-<div class="fill fats"></div>
-<p>Fats</p>
+<div class="card">
+<h3>Improvement</h3>
+<p>Increase vegetable intake.</p>
 </div>
 
-</div>
-
-<!-- DAILY INTAKE -->
-
-<div class="chart-box">
-
-<h3>Daily Intake Progress</h3>
-
-<div class="circle">
-
-<div class="inner">
-78%
-</div>
-
-</div>
-
-<p>Overall nutrition target achieved</p>
-
-</div>
-
+<div class="card">
+<h3>Trend</h3>
+<p>Healthier choices increasing over time.</p>
 </div>
 
 </section>
 
-<!-- INSIGHTS -->
-
-<section class="insights">
-
-<h2>AI Nutrition Insights</h2>
-
-<div class="insight-grid">
-
-<div class="insight-card">
-<h3>✔ Strength</h3>
-<p>Your protein intake is consistent across most meals.</p>
-</div>
-
-<div class="insight-card">
-<h3>⚠ Improvement</h3>
-<p>Increase vegetable intake for better micronutrient balance.</p>
-</div>
-
-<div class="insight-card">
-<h3>✔ Trend</h3>
-<p>Healthier food choices have increased over time.</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- DATA EXPLANATION -->
-
-<section class="info-section">
-
-<div class="info-card">
-
-<h3>How Data is Calculated</h3>
-
-<p>
-Dashboard values are simulated using nutritional benchmarks based on typical dietary intake patterns and food composition data.
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>Purpose of Analytics</h3>
-
-<p>
-This system demonstrates how enterprise computing can use data visualisation to support better decision-making in health and nutrition.
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>Future Improvements</h3>
-
-<p>
-Could integrate real user tracking, databases, and AI-based personalisation systems.
-</p>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-<div class="footer-bottom">
-<p>© 2026 NutriSmart | Analytics Dashboard</p>
-</div>
-
+<footer class="footer">
+<p>© 2026 NutriSmart</p>
 </footer>
 
 <script src="script.js"></script>
-
 </body>
-
 </html>
