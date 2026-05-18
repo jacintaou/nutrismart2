@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NutriSmart Enterprise System</title>
+  <title>Food Analysis - NutriSmart</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-  NutriSmart Enterprise System
+  NutriSmart Food Analysis Engine
 </header>
 
 <nav>
@@ -21,62 +21,70 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<!-- HERO SECTION -->
 <div class="section">
 
+  <!-- INTRO -->
   <div class="card">
-    <h2>🥗 Welcome to NutriSmart</h2>
+    <h2>🔍 Food Analysis Tool</h2>
     <p>
-      NutriSmart is an enterprise-level nutrition intelligence system designed to help students and young people
-      make smarter dietary choices using data analytics, food scoring algorithms, and personalised recommendations.
-    </p>
-    <p>
-      This system was built to address the growing issue of poor nutrition, high fast-food consumption,
-      and lack of awareness around balanced diets in school-aged populations.
+      Select a food item below to generate an instant nutritional breakdown.
+      The system uses a scoring algorithm based on calories, sugar, and fat content.
     </p>
   </div>
 
+  <!-- ANALYSIS TOOL -->
   <div class="card">
-    <h2>🌍 Real-World Problem</h2>
-    <p>
-      Across Australia and globally, students are increasingly consuming high-calorie, low-nutrient foods due to
-      convenience, cost, and lifestyle pressures.
-    </p>
-    <p>
-      This contributes to long-term health risks such as obesity, diabetes, fatigue, and reduced academic performance.
-      NutriSmart addresses this by translating nutritional data into simple, actionable insights.
-    </p>
+
+    <h2>🍽️ Select a Food Item</h2>
+
+    <select id="foodSelect">
+      <option>Apple</option>
+      <option>Banana</option>
+      <option>Burger</option>
+      <option>Cheeseburger</option>
+      <option>Fries</option>
+      <option>Pizza</option>
+      <option>Fried Chicken</option>
+      <option>Sushi</option>
+      <option>Salad Bowl</option>
+      <option>Yogurt</option>
+      <option>Chocolate Bar</option>
+      <option>Ice Cream</option>
+      <option>Sandwich</option>
+      <option>Chicken Rice</option>
+    </select>
+
+    <button onclick="analyseFood()">Analyse Nutrition</button>
+
+    <div id="result"></div>
+
   </div>
 
 </div>
 
-<!-- FEATURE GRID -->
+<!-- FOOD CATEGORY EXPLORER -->
 <div class="section">
 
   <div class="card">
-    <h2>⚙️ System Features</h2>
-    <p>Explore the core components of the NutriSmart enterprise platform:</p>
+    <h2>📚 Explore Food Categories</h2>
+    <p>Click a category to view examples of foods and healthier alternatives.</p>
 
     <div class="grid">
 
-      <div class="food-card">
-        <h3>🍎 AI Food Scoring</h3>
-        <p>Each food is analysed using calories, sugar, and fat to generate a health score out of 10.</p>
+      <div class="food-card" onclick="showCategory('fastfood')">
+        🍔 Fast Food
       </div>
 
-      <div class="food-card">
-        <h3>🔁 Healthy Swaps</h3>
-        <p>Unhealthy foods trigger smart recommendations for healthier alternatives.</p>
+      <div class="food-card" onclick="showCategory('healthy')">
+        🥗 Healthy Meals
       </div>
 
-      <div class="food-card">
-        <h3>📊 Data Dashboard</h3>
-        <p>Visualise nutrition trends using interactive charts and comparisons.</p>
+      <div class="food-card" onclick="showCategory('snacks')">
+        🍫 Snacks
       </div>
 
-      <div class="food-card">
-        <h3>🍽️ Meal Planning</h3>
-        <p>Generate balanced daily meal structures for better dietary habits.</p>
+      <div class="food-card" onclick="showCategory('drinks')">
+        🥤 Drinks
       </div>
 
     </div>
@@ -84,66 +92,104 @@
 
 </div>
 
-<!-- WHY THIS MATTERS -->
+<!-- RESULT INSIGHT SECTION -->
 <div class="section">
 
   <div class="card">
-    <h2>🎯 Why This Project Matters</h2>
+    <h2>📊 How the Score Works</h2>
     <p>
-      NutriSmart aligns with <strong>UN Sustainable Development Goal 3: Good Health and Wellbeing</strong>.
+      Each food is scored out of 10 based on:
     </p>
     <p>
-      It demonstrates how data-driven systems can be used in real-world enterprise environments to solve
-      social and health-related problems through technology.
+      • Calories (energy content)<br>
+      • Sugar levels (health impact)<br>
+      • Fat content (diet balance)
     </p>
-  </div>
 
-  <div class="card">
-    <h2>💡 How It Works</h2>
     <p>
-      1. User selects a food item<br>
-      2. System analyses nutritional values<br>
-      3. Algorithm generates a health score<br>
-      4. Recommendation engine suggests improvements<br>
-      5. Data is visualised in dashboard form
+      Higher scores = healthier foods. Lower scores trigger swap recommendations.
     </p>
   </div>
 
 </div>
 
-<!-- CALL TO ACTION -->
-<div class="section">
+<!-- POPUP MODAL -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <div class="modal-content" id="modalText"></div>
+</div>
 
-  <div class="card">
-    <h2>🚀 Get Started</h2>
-    <p>
-      Use the navigation bar above to explore the system. Start by analysing your food choices or building a meal plan.
-    </p>
+<!-- SCRIPT -->
+<script>
+const foods = {
+  Apple: {cal: 95, sugar: 19, fat: 0.3},
+  Banana: {cal: 105, sugar: 14, fat: 0.4},
+  Burger: {cal: 550, sugar: 9, fat: 30},
+  Cheeseburger: {cal: 650, sugar: 8, fat: 40},
+  Fries: {cal: 365, sugar: 0, fat: 17},
+  Pizza: {cal: 285, sugar: 5, fat: 12},
+  "Fried Chicken": {cal: 420, sugar: 2, fat: 25},
+  Sushi: {cal: 200, sugar: 3, fat: 4},
+  "Salad Bowl": {cal: 120, sugar: 4, fat: 5},
+  Yogurt: {cal: 150, sugar: 12, fat: 4},
+  "Chocolate Bar": {cal: 230, sugar: 25, fat: 13},
+  "Ice Cream": {cal: 270, sugar: 28, fat: 14},
+  Sandwich: {cal: 250, sugar: 3, fat: 8},
+  "Chicken Rice": {cal: 400, sugar: 2, fat: 10}
+};
 
-    <div class="grid">
-      <div class="food-card">
-        <h3>Start Analysing</h3>
-        <p>Click into the food analysis tool to evaluate meals instantly.</p>
-      </div>
+function analyseFood() {
+  const food = document.getElementById("foodSelect").value;
+  const data = foods[food];
 
-      <div class="food-card">
-        <h3>Build Meals</h3>
-        <p>Create structured meal plans for breakfast, lunch, and dinner.</p>
-      </div>
+  let score = 10 - Math.floor((data.cal + data.sugar * 2 + data.fat * 10) / 120);
+  if (score < 1) score = 1;
 
-      <div class="food-card">
-        <h3>View Insights</h3>
-        <p>See how your diet compares across different food categories.</p>
-      </div>
+  let swap = score < 6
+    ? "Try replacing this with a Salad Bowl, Sushi, or Yogurt."
+    : "This is already a balanced choice.";
+
+  document.getElementById("result").innerHTML = `
+    <div class="card">
+      <h3>🍽️ ${food}</h3>
+      <p>Calories: ${data.cal}</p>
+      <p>Sugar: ${data.sugar}g</p>
+      <p>Fat: ${data.fat}g</p>
+
+      <p>Health Score:
+        <span class="${score > 6 ? 'good' : 'bad'}">
+          ${score}/10
+        </span>
+      </p>
+
+      <p><strong>Recommendation:</strong> ${swap}</p>
     </div>
+  `;
+}
 
-  </div>
+function showCategory(type) {
+  let content = "";
 
-</div>
+  if (type === "fastfood") {
+    content = "🍔 Fast food is high in calories and fats. Examples: Burger, Fries, Pizza.";
+  }
+  if (type === "healthy") {
+    content = "🥗 Healthy foods include Salad, Sushi, Yogurt — rich in nutrients and low in fats.";
+  }
+  if (type === "snacks") {
+    content = "🍫 Snacks like chocolate bars and chips are high in sugar and should be limited.";
+  }
+  if (type === "drinks") {
+    content = "🥤 Sugary drinks increase calorie intake without nutrition benefits.";
+  }
 
-<footer>
-  Enterprise Computing Project — NutriSmart System
-</footer>
+  document.getElementById("modalText").innerHTML = `<h2>${content}</h2>`;
+  document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
 
 </body>
 </html>
