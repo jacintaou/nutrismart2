@@ -1,71 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Dashboard</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Dashboard - NutriSmart</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav class="navbar">
-<div class="logo">NutriSmart</div>
-<div class="nav-links">
-<a href="index.html">Home</a>
-<a href="analyse.html">Analyse</a>
-<a href="meal.html">Meal Planner</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-</div>
-</nav>
-
-<header class="page-header">
-<h1>Nutrition Dashboard</h1>
-<p>Real-time simulated analytics</p>
+<header>
+  NutriSmart Nutrition Dashboard
 </header>
 
-<section class="section grid">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="analyse.html">Analyse Food</a>
+  <a href="meal.html">Meal Planner</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-<div class="stat">
-<h2>78%</h2>
-<p>Healthy Score</p>
+<!-- INTRO -->
+<div class="section">
+
+  <div class="card">
+    <h2>📊 Nutrition Data Dashboard</h2>
+    <p>
+      This dashboard provides a visual representation of nutritional trends across commonly consumed foods.
+      It helps identify patterns in calorie intake, sugar consumption, and diet imbalance.
+    </p>
+  </div>
+
 </div>
 
-<div class="stat">
-<h2>2450</h2>
-<p>Calories</p>
+<!-- STATS OVERVIEW -->
+<div class="section">
+
+  <div class="grid">
+
+    <div class="food-card">
+      <h3>🍔 Fast Food Intake</h3>
+      <p>High frequency detected</p>
+      <p class="bad">Risk Level: High</p>
+    </div>
+
+    <div class="food-card">
+      <h3>🥗 Healthy Meals</h3>
+      <p>Moderate consumption</p>
+      <p class="good">Risk Level: Low</p>
+    </div>
+
+    <div class="food-card">
+      <h3>🍫 Sugary Snacks</h3>
+      <p>Above recommended intake</p>
+      <p class="bad">Risk Level: Medium</p>
+    </div>
+
+    <div class="food-card">
+      <h3>🥤 Sugary Drinks</h3>
+      <p>Frequent consumption</p>
+      <p class="bad">Risk Level: High</p>
+    </div>
+
+  </div>
+
 </div>
 
-<div class="stat">
-<h2>64g</h2>
-<p>Protein</p>
+<!-- INSIGHTS -->
+<div class="section">
+
+  <div class="card">
+    <h2>🧠 AI-Generated Insights</h2>
+
+    <p>📌 Students are consuming too many high-calorie fast foods.</p>
+    <p>📌 Vegetable intake is below recommended dietary guidelines.</p>
+    <p>📌 Sugar consumption peaks during afternoon snack periods.</p>
+    <p>📌 Meal planning improves overall health scores by up to 35%.</p>
+
+  </div>
+
 </div>
 
-</section>
+<!-- SIMPLE VISUAL CHART (CSS BAR STYLE) -->
+<div class="section">
 
-<section class="section grid">
+  <div class="card">
+    <h2>📈 Calorie Comparison Visual</h2>
 
-<div class="card">
-<h3>Insight</h3>
-<p>Protein intake is consistent across meals.</p>
+    <p>Burger</p>
+    <div style="background:#ff69b4;width:90%;height:20px;"></div>
+
+    <p>Pizza</p>
+    <div style="background:#c084fc;width:70%;height:20px;"></div>
+
+    <p>Salad</p>
+    <div style="background:#ffd700;width:30%;height:20px;"></div>
+
+    <p>Apple</p>
+    <div style="background:#90ee90;width:25%;height:20px;"></div>
+
+  </div>
+
 </div>
 
-<div class="card">
-<h3>Improvement</h3>
-<p>Increase vegetable intake.</p>
+<!-- SUMMARY -->
+<div class="section">
+
+  <div class="card">
+    <h2>📌 System Summary</h2>
+    <p>
+      The NutriSmart dashboard transforms raw nutritional data into meaningful insights that support healthier decision-making.
+    </p>
+    <p>
+      It acts as a monitoring system for dietary habits, simulating real-world enterprise analytics platforms.
+    </p>
+  </div>
+
 </div>
 
-<div class="card">
-<h3>Trend</h3>
-<p>Healthier choices increasing over time.</p>
-</div>
-
-</section>
-
-<footer class="footer">
-<p>© 2026 NutriSmart</p>
-</footer>
-
-<script src="script.js"></script>
 </body>
 </html>
