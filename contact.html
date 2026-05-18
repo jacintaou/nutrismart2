@@ -1,56 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Contact</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Contact - NutriSmart</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav class="navbar">
-<div class="logo">NutriSmart</div>
-<div class="nav-links">
-<a href="index.html">Home</a>
-<a href="analyse.html">Analyse</a>
-<a href="meal.html">Meal Planner</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-</div>
-</nav>
-
-<header class="page-header">
-<h1>Contact Us</h1>
-<p>Send feedback or enterprise enquiries</p>
+<header>
+  Contact & Support - NutriSmart
 </header>
 
-<section class="section grid">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="analyse.html">Analyse Food</a>
+  <a href="meal.html">Meal Planner</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="about.html">About</a>
+</nav>
 
-<div class="card">
+<!-- INTRO -->
+<div class="section">
 
-<h3>Send Message</h3>
-
-<input placeholder="Name">
-<input placeholder="Email">
-<textarea placeholder="Message"></textarea>
-
-<button class="btn">Send</button>
+  <div class="card">
+    <h2>📩 Get in Touch</h2>
+    <p>
+      This contact system allows users to submit enquiries, feedback, and technical issues related to the NutriSmart platform.
+    </p>
+    <p>
+      Responses are used to improve system functionality and user experience.
+    </p>
+  </div>
 
 </div>
 
-<div class="card">
+<!-- CONTACT FORM -->
+<div class="section">
 
-<h3>Enquiry Types</h3>
-<p>Feedback, bug reports, partnerships, or suggestions.</p>
+  <div class="card">
+
+    <h2>🧾 Submit an Enquiry</h2>
+
+    <input type="text" placeholder="Full Name">
+
+    <input type="email" placeholder="Email Address">
+
+    <select>
+      <option>General Inquiry</option>
+      <option>Feedback on Food Analysis Tool</option>
+      <option>Meal Planner Issue</option>
+      <option>Dashboard Data Question</option>
+      <option>Bug Report</option>
+      <option>School Assessment Question</option>
+    </select>
+
+    <select>
+      <option>Priority Level: Low</option>
+      <option>Priority Level: Medium</option>
+      <option>Priority Level: High</option>
+    </select>
+
+    <input type="text" placeholder="Subject">
+
+    <textarea placeholder="Describe your enquiry..." style="width:100%; height:120px; margin-top:10px; border-radius:10px;"></textarea>
+
+    <button onclick="submitForm()">Submit Enquiry</button>
+
+    <p id="responseMessage"></p>
+
+  </div>
 
 </div>
 
-</section>
+<!-- SUPPORT INFO -->
+<div class="section">
 
-<footer class="footer">
-<p>© 2026 NutriSmart</p>
-</footer>
+  <div class="card">
+    <h2>🧠 Support Information</h2>
 
-<script src="script.js"></script>
+    <p>
+      NutriSmart is designed as an educational prototype system. All feedback is used to simulate real-world enterprise development processes.
+    </p>
+
+    <p>
+      Typical response areas include:
+    </p>
+
+    <p>
+      • System improvements<br>
+      • Feature requests<br>
+      • Nutrition database updates<br>
+      • UI/UX enhancements
+    </p>
+
+  </div>
+
+</div>
+
+<!-- SCRIPT -->
+<script>
+function submitForm() {
+  document.getElementById("responseMessage").innerHTML =
+    "✅ Thank you! Your enquiry has been submitted successfully.";
+}
+</script>
+
 </body>
 </html>
