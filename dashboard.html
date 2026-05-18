@@ -1,123 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard - NutriSmart</title>
+  <title>Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  NutriSmart Nutrition Dashboard
-</header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="analyse.html">Analyse Food</a>
-  <a href="meal.html">Meal Planner</a>
-  <a href="dashboard.html">Dashboard</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</nav>
-
-<!-- INTRO -->
-<div class="section">
-
-  <div class="card">
-    <h2>📊 Nutrition Data Dashboard</h2>
-    <p>
-      This dashboard provides a visual representation of nutritional trends across commonly consumed foods.
-      It helps identify patterns in calorie intake, sugar consumption, and diet imbalance.
-    </p>
+<div class="navbar">
+  <div class="logo">Nutri<span>Flow</span></div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="analyser.html">Analyse</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="mealplanner.html">Meal Plan</a>
   </div>
-
 </div>
 
-<!-- STATS OVERVIEW -->
-<div class="section">
+<section class="section">
 
-  <div class="grid">
+  <h1>Daily Nutrition Dashboard</h1>
 
-    <div class="food-card">
-      <h3>🍔 Fast Food Intake</h3>
-      <p>High frequency detected</p>
-      <p class="bad">Risk Level: High</p>
+  <div class="box">
+
+    <select id="foodInput">
+      <option>Big Mac</option>
+      <option>Fries</option>
+      <option>Chicken Burger</option>
+      <option>Pizza</option>
+      <option>Salad</option>
+      <option>Protein Shake</option>
+    </select>
+
+    <button onclick="addFood()">Add Food</button>
+    <button onclick="resetDay()">Reset Day</button>
+
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      <h3>Calories</h3>
+      <p id="cal">0</p>
     </div>
 
-    <div class="food-card">
-      <h3>🥗 Healthy Meals</h3>
-      <p>Moderate consumption</p>
-      <p class="good">Risk Level: Low</p>
+    <div class="stat">
+      <h3>Protein</h3>
+      <p id="pro">0</p>
     </div>
 
-    <div class="food-card">
-      <h3>🍫 Sugary Snacks</h3>
-      <p>Above recommended intake</p>
-      <p class="bad">Risk Level: Medium</p>
+    <div class="stat">
+      <h3>Carbs</h3>
+      <p id="carb">0</p>
     </div>
 
-    <div class="food-card">
-      <h3>🥤 Sugary Drinks</h3>
-      <p>Frequent consumption</p>
-      <p class="bad">Risk Level: High</p>
+    <div class="stat">
+      <h3>Fat</h3>
+      <p id="fat">0</p>
     </div>
 
   </div>
 
-</div>
+  <h2 style="margin-top:30px;">Progress</h2>
 
-<!-- INSIGHTS -->
-<div class="section">
+  <p>Calories Goal</p>
+  <div class="bar"><div id="calBar"></div></div>
 
-  <div class="card">
-    <h2>🧠 AI-Generated Insights</h2>
+  <p>Protein Goal</p>
+  <div class="bar"><div id="proBar"></div></div>
 
-    <p>📌 Students are consuming too many high-calorie fast foods.</p>
-    <p>📌 Vegetable intake is below recommended dietary guidelines.</p>
-    <p>📌 Sugar consumption peaks during afternoon snack periods.</p>
-    <p>📌 Meal planning improves overall health scores by up to 35%.</p>
+  <h2 style="margin-top:30px;">Food Log</h2>
+  <div id="log" class="card"></div>
 
-  </div>
+</section>
 
-</div>
+<script src="script.js"></script>
 
-<!-- SIMPLE VISUAL CHART (CSS BAR STYLE) -->
-<div class="section">
+<script>
+let logList = [];
 
-  <div class="card">
-    <h2>📈 Calorie Comparison Visual</h2>
+function addFood() {
+  let food = document.getElementById("foodInput").value;
+  let d = foods[food];
 
-    <p>Burger</p>
-    <div style="background:#ff69b4;width:90%;height:20px;"></div>
+  total.cal += d.cal;
+  total.pro += d.pro;
+  total.carb += d.carb;
+  total.fat += d.fat;
 
-    <p>Pizza</p>
-    <div style="background:#c084fc;width:70%;height:20px;"></div>
+  document.getElementById("cal").innerText = total.cal;
+  document.getElementById("pro").innerText = total.pro;
+  document.getElementById("carb").innerText = total.carb;
+  document.getElementById("fat").innerText = total.fat;
 
-    <p>Salad</p>
-    <div style="background:#ffd700;width:30%;height:20px;"></div>
+  document.getElementById("calBar").style.width = (total.cal/2000)*100 + "%";
+  document.getElementById("proBar").style.width = (total.pro/120)*100 + "%";
 
-    <p>Apple</p>
-    <div style="background:#90ee90;width:25%;height:20px;"></div>
+  logList.push(food);
+  document.getElementById("log").innerHTML =
+    logList.map(f => `<p>• ${f}</p>`).join("");
+}
 
-  </div>
+function resetDay() {
+  total = {cal:0, pro:0, carb:0, fat:0};
+  logList = [];
 
-</div>
+  document.getElementById("cal").innerText = 0;
+  document.getElementById("pro").innerText = 0;
+  document.getElementById("carb").innerText = 0;
+  document.getElementById("fat").innerText = 0;
 
-<!-- SUMMARY -->
-<div class="section">
+  document.getElementById("calBar").style.width = "0%";
+  document.getElementById("proBar").style.width = "0%";
 
-  <div class="card">
-    <h2>📌 System Summary</h2>
-    <p>
-      The NutriSmart dashboard transforms raw nutritional data into meaningful insights that support healthier decision-making.
-    </p>
-    <p>
-      It acts as a monitoring system for dietary habits, simulating real-world enterprise analytics platforms.
-    </p>
-  </div>
-
-</div>
+  document.getElementById("log").innerHTML = "";
+}
+</script>
 
 </body>
 </html>
