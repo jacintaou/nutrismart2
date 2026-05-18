@@ -1,33 +1,199 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Meal Planner</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meal Planner | NutriSmart</title>
+
 <link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
 
+<div class="bg1"></div>
+<div class="bg2"></div>
+
+<!-- NAV -->
+
 <nav>
-  <div class="logo">NutriSmart</div>
-  <div class="links">
-    <a href="index.html">Home</a>
-    <a href="analyse.html">Analyse</a>
-    <a href="meal.html">Meal Planner</a>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
+
+<div class="logo">NutriSmart</div>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="analyse.html">Analyse</a>
+<a href="meal.html">Meal Planner</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
 </nav>
 
-<section class="box">
+<!-- HEADER -->
 
-<h1>Meal Planner</h1>
+<section class="page-header">
 
-<button onclick="generateMeal()">Generate Meal Plan</button>
+<h1>Smart Meal Planner</h1>
 
-<div id="mealResult"></div>
+<p>
+Generate balanced meals instantly or build your own daily nutrition plan.
+</p>
 
 </section>
 
+<!-- GENERATOR SECTION -->
+
+<section class="planner">
+
+<div class="planner-box">
+
+<h2>Generate Your Meal Plan</h2>
+
+<p>Click below to get a healthy meal suggestion based on balanced nutrition.</p>
+
+<button onclick="generateMeal()" class="btn">
+Generate Meal
+</button>
+
+<div id="mealOutput" class="meal-output">
+
+<p>Your meal will appear here...</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PRE-MADE RECIPES -->
+
+<section class="recipes">
+
+<h2>Healthy Recipe Ideas</h2>
+
+<p class="section-subtitle">
+Click on a recipe card to view details.
+</p>
+
+<div class="recipe-grid">
+
+<div class="recipe-card">
+
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c">
+
+<h3>Chicken Salad Bowl</h3>
+<p>High protein, low carb balanced meal.</p>
+
+</div>
+
+<div class="recipe-card">
+
+<img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141">
+
+<h3>Avocado Toast</h3>
+<p>Healthy fats with wholegrain energy.</p>
+
+</div>
+
+<div class="recipe-card">
+
+<img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd">
+
+<h3>Veggie Wrap</h3>
+<p>Fresh, fibre-rich plant-based option.</p>
+
+</div>
+
+<div class="recipe-card">
+
+<img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061">
+
+<h3>Berry Yogurt Bowl</h3>
+<p>High antioxidants & gut-friendly probiotics.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- WEEK PLAN -->
+
+<section class="week-plan">
+
+<h2>7-Day Sample Meal Plan</h2>
+
+<div class="week-grid">
+
+<div class="day">Mon<br><span>Oats + Banana</span></div>
+<div class="day">Tue<br><span>Chicken Rice Bowl</span></div>
+<div class="day">Wed<br><span>Veggie Wrap</span></div>
+<div class="day">Thu<br><span>Salmon + Veg</span></div>
+<div class="day">Fri<br><span>Egg Toast</span></div>
+<div class="day">Sat<br><span>Yogurt Bowl</span></div>
+<div class="day">Sun<br><span>Healthy Burger</span></div>
+
+</div>
+
+</section>
+
+<!-- INFO -->
+
+<section class="info-section">
+
+<div class="info-card">
+
+<h3>Why Meal Planning Matters</h3>
+
+<p>
+Meal planning improves dietary consistency, reduces unhealthy food choices, and supports long-term health outcomes.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Balanced Nutrition</h3>
+
+<p>
+A healthy meal should include protein, complex carbohydrates, healthy fats, vitamins, and minerals.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Personalisation</h3>
+
+<p>
+NutriSmart generates meals based on general nutrition principles and can be expanded for personalised dietary needs.
+</p>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-bottom">
+<p>© 2026 NutriSmart | Meal Planning System</p>
+</div>
+
+</footer>
+
 <script src="script.js"></script>
+
 </body>
+
 </html>
