@@ -1,34 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Analyse Food</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Analyse Food | NutriSmart</title>
+
 <link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
 
+<div class="bg1"></div>
+<div class="bg2"></div>
+
+<!-- NAV -->
+
 <nav>
-  <div class="logo">NutriSmart</div>
-  <div class="links">
-    <a href="index.html">Home</a>
-    <a href="analyse.html">Analyse</a>
-    <a href="meal.html">Meal Planner</a>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
+
+<div class="logo">NutriSmart</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="analyse.html">Analyse</a>
+<a href="meal.html">Meal Planner</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
+
 </nav>
 
-<section class="box">
+<!-- HEADER -->
 
-<h1>Food Analysis</h1>
+<section class="page-header">
 
-<input id="foodInput" placeholder="Type food e.g pizza, sushi">
-<button onclick="analyseFood()">Analyse</button>
+<h1>Food Analysis Tool</h1>
 
-<div id="result"></div>
+<p>
+Type or select a food to see its nutrition breakdown, health rating, and smarter alternatives.
+</p>
 
 </section>
 
+<!-- ANALYSER -->
+
+<section class="analyser">
+
+<div class="analyse-box">
+
+<h2>Analyse Your Food</h2>
+
+<p>Select a food or type one below:</p>
+
+<!-- INPUT -->
+
+<input type="text" id="foodInput" placeholder="e.g. apple, burger, pizza">
+
+<!-- QUICK SELECT -->
+
+<select id="foodSelect" onchange="document.getElementById('foodInput').value=this.value">
+
+<option value="">-- Choose a food --</option>
+<option value="apple">Apple</option>
+<option value="burger">Burger</option>
+<option value="chips">Chips</option>
+<option value="pizza">Pizza</option>
+<option value="rice">Rice</option>
+<option value="chicken">Chicken</option>
+<option value="salad">Salad</option>
+
+</select>
+
+<!-- BUTTON -->
+
+<button onclick="analyseFood()" class="btn">
+Analyse
+</button>
+
+</div>
+
+</section>
+
+<!-- RESULT -->
+
+<section class="results">
+
+<div id="resultBox" class="result-box">
+
+<h3>Your results will appear here</h3>
+
+</div>
+
+</section>
+
+<!-- INFO SECTION -->
+
+<section class="info-section">
+
+<div class="info-card">
+
+<h3>How it works</h3>
+
+<p>
+NutriSmart uses a structured nutrition database to estimate calories, macronutrients, and overall health rating based on typical food values.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Health Rating System</h3>
+
+<p>
+Foods are rated from 1–10 based on nutritional balance, sugar content, fat levels, and processing level.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Smart Swaps</h3>
+
+<p>
+If a food is low in nutritional value, the system suggests a healthier alternative to improve your diet.
+</p>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-bottom">
+<p>© 2026 NutriSmart | Nutrition Intelligence Platform</p>
+</div>
+
+</footer>
+
 <script src="script.js"></script>
+
 </body>
+
 </html>
