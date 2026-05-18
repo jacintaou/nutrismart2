@@ -457,5 +457,307 @@ justify-content:center;
 margin:50px 20px;
 padding:50px 25px;
 }
+/* =========================
+   PAGE HEADER (ALL PAGES)
+========================= */
+
+.page-header{
+padding:80px 80px 40px;
+text-align:center;
+}
+
+.page-header h1{
+font-size:52px;
+margin-bottom:15px;
+}
+
+.page-header p{
+font-size:18px;
+color:#5b7a65;
+max-width:700px;
+margin:0 auto;
+}
+
+/* =========================
+   ANALYSE PAGE
+========================= */
+
+.analyser{
+display:flex;
+justify-content:center;
+padding:40px 80px;
+}
+
+.analyse-box{
+background:white;
+padding:40px;
+border-radius:30px;
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+text-align:center;
+width:100%;
+max-width:600px;
+}
+
+.analyse-box input,
+.analyse-box select{
+width:100%;
+padding:14px;
+margin-top:15px;
+border-radius:12px;
+border:1px solid #ddd;
+font-size:16px;
+}
+
+.analyse-box button{
+margin-top:20px;
+width:100%;
+}
+
+/* RESULT BOX */
+
+.result-box{
+margin:40px auto;
+max-width:700px;
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+text-align:center;
+}
+
+.result-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin:20px 0;
+}
+
+.card{
+background:#f3fff6;
+padding:15px;
+border-radius:15px;
+font-weight:600;
+}
+
+.rating-bar{
+height:12px;
+background:#eee;
+border-radius:10px;
+overflow:hidden;
+margin:10px 0;
+}
+
+.fill{
+height:100%;
+background:linear-gradient(to right,#16a34a,#22c55e);
+}
+
+/* =========================
+   MEAL PLANNER
+========================= */
+
+.planner{
+display:flex;
+justify-content:center;
+padding:40px 80px;
+}
+
+.planner-box{
+background:white;
+padding:40px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+max-width:600px;
+width:100%;
+}
+
+.meal-output{
+margin-top:25px;
+padding:25px;
+background:#f3fff6;
+border-radius:20px;
+font-size:18px;
+}
+
+/* RECIPES */
+
+.recipes{
+padding:80px;
+text-align:center;
+}
+
+.recipe-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.recipe-card{
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+.recipe-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+/* WEEK PLAN */
+
+.week-plan{
+padding:80px;
+text-align:center;
+}
+
+.week-grid{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:10px;
+margin-top:30px;
+}
+
+.day{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard-stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+padding:40px 80px;
+}
+
+.dash-card{
+background:white;
+padding:30px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+.charts{
+padding:80px;
+text-align:center;
+}
+
+.chart-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.chart-box{
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* FAKE BARS */
+
+.bar{
+margin:15px 0;
+}
+
+.fill.protein{width:80%;}
+.fill.carbs{width:65%;}
+.fill.fats{width:40%;}
+
+/* CIRCLE */
+
+.circle{
+width:140px;
+height:140px;
+border-radius:50%;
+border:10px solid #22c55e;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:20px auto;
+font-size:24px;
+font-weight:700;
+}
+
+/* INSIGHTS */
+
+.insights{
+padding:80px;
+text-align:center;
+}
+
+.insight-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.insight-card{
+background:white;
+padding:25px;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   ABOUT + CONTACT
+========================= */
+
+.enterprise-grid,
+.contact-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+padding:40px 80px;
+}
+
+.enterprise-card,
+.info-card{
+background:white;
+padding:25px;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+.contact-form form{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+padding:12px;
+border-radius:10px;
+border:1px solid #ddd;
+}
+
+/* MAP SECTION */
+
+.map-section{
+padding:80px;
+text-align:center;
+}
+
+.map-section img{
+width:100%;
+max-width:800px;
+border-radius:25px;
+margin-top:20px;
+}
 
 }
