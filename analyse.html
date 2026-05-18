@@ -1,66 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Analyse | NutriSmart</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Food Analysis - NutriSmart</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav class="navbar">
-<div class="logo">NutriSmart</div>
-<div class="nav-links">
-<a href="index.html">Home</a>
-<a href="analyse.html">Analyse</a>
-<a href="meal.html">Meal Planner</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-</div>
-</nav>
-
-<header class="page-header">
-<h1>Food Analysis Engine</h1>
-<p>Search foods, view nutrition data, and receive smart health insights</p>
+<header>
+  NutriSmart Food Analysis Engine
 </header>
 
-<section class="section grid">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="analyse.html">Analyse Food</a>
+  <a href="meal.html">Meal Planner</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-<div class="card">
+<div class="section">
 
-<h3>Enter Food</h3>
-<input id="foodInput" placeholder="Try: burger, apple, pizza">
+  <!-- INTRO -->
+  <div class="card">
+    <h2>🔍 Food Analysis Tool</h2>
+    <p>
+      Select a food item below to generate an instant nutritional breakdown.
+      The system uses a scoring algorithm based on calories, sugar, and fat content.
+    </p>
+  </div>
 
-<button class="btn" onclick="analyseFood()">Analyse</button>
+  <!-- ANALYSIS TOOL -->
+  <div class="card">
 
-<div id="resultBox" class="result"></div>
+    <h2>🍽️ Select a Food Item</h2>
+
+    <select id="foodSelect">
+      <option>Apple</option>
+      <option>Banana</option>
+      <option>Burger</option>
+      <option>Cheeseburger</option>
+      <option>Fries</option>
+      <option>Pizza</option>
+      <option>Fried Chicken</option>
+      <option>Sushi</option>
+      <option>Salad Bowl</option>
+      <option>Yogurt</option>
+      <option>Chocolate Bar</option>
+      <option>Ice Cream</option>
+      <option>Sandwich</option>
+      <option>Chicken Rice</option>
+    </select>
+
+    <button onclick="analyseFood()">Analyse Nutrition</button>
+
+    <div id="result"></div>
+
+  </div>
 
 </div>
 
-<div class="card">
+<!-- FOOD CATEGORY EXPLORER -->
+<div class="section">
 
-<h3>Popular Foods</h3>
-<p>Quick-select analysis options:</p>
+  <div class="card">
+    <h2>📚 Explore Food Categories</h2>
+    <p>Click a category to view examples of foods and healthier alternatives.</p>
 
-<button class="btn" onclick="quickFood('apple')">Apple</button>
-<button class="btn" onclick="quickFood('pizza')">Pizza</button>
-<button class="btn" onclick="quickFood('burger')">Burger</button>
-<button class="btn" onclick="quickFood('salad')">Salad</button>
+    <div class="grid">
+
+      <div class="food-card" onclick="showCategory('fastfood')">
+        🍔 Fast Food
+      </div>
+
+      <div class="food-card" onclick="showCategory('healthy')">
+        🥗 Healthy Meals
+      </div>
+
+      <div class="food-card" onclick="showCategory('snacks')">
+        🍫 Snacks
+      </div>
+
+      <div class="food-card" onclick="showCategory('drinks')">
+        🥤 Drinks
+      </div>
+
+    </div>
+  </div>
 
 </div>
 
-<div class="card">
+<!-- RESULT INSIGHT SECTION -->
+<div class="section">
 
-<h3>Health System</h3>
-<p>Foods are rated based on sugar, fat, and nutritional density.</p>
+  <div class="card">
+    <h2>📊 How the Score Works</h2>
+    <p>
+      Each food is scored out of 10 based on:
+    </p>
+    <p>
+      • Calories (energy content)<br>
+      • Sugar levels (health impact)<br>
+      • Fat content (diet balance)
+    </p>
+
+    <p>
+      Higher scores = healthier foods. Lower scores trigger swap recommendations.
+    </p>
+  </div>
+
 </div>
 
-</section>
+<!-- POPUP MODAL -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <div class="modal-content" id="modalText"></div>
+</div>
 
-<footer class="footer">
-<p>© 2026 NutriSmart</p>
-</footer>
+<!-- SCRIPT -->
+<script>
+const foods = {
+  Apple: {cal: 95, sugar: 19, fat: 0.3},
+  Banana: {cal: 105, sugar: 14, fat: 0.4},
+  Burger: {cal: 550, sugar: 9, fat: 30},
+  Cheeseburger: {cal: 650, sugar: 8, fat: 40},
+  Fries: {cal: 365, sugar: 0, fat: 17},
+  Pizza: {cal: 285, sugar: 5, fat: 12},
+  "Fried Chicken": {cal: 420, sugar: 2, fat: 25},
+  Sushi: {cal: 200, sugar: 3, fat: 4},
+  "Salad Bowl": {cal: 120, sugar: 4, fat: 5},
+  Yogurt: {cal: 150, sugar: 12, fat: 4},
+  "Chocolate Bar": {cal: 230, sugar: 25, fat: 13},
+  "Ice Cream": {cal: 270, sugar: 28, fat: 14},
+  Sandwich: {cal: 250, sugar: 3, fat: 8},
+  "Chicken Rice": {cal: 400, sugar: 2, fat: 10}
+};
 
-<script src="script.js"></script>
+function analyseFood() {
+  const food = document.getElementById("foodSelect").value;
+  const data = foods[food];
+
+  let score = 10 - Math.floor((data.cal + data.sugar * 2 + data.fat * 10) / 120);
+  if (score < 1) score = 1;
+
+  let swap = score < 6
+    ? "Try replacing this with a Salad Bowl, Sushi, or Yogurt."
+    : "This is already a balanced choice.";
+
+  document.getElementById("result").innerHTML = `
+    <div class="card">
+      <h3>🍽️ ${food}</h3>
+      <p>Calories: ${data.cal}</p>
+      <p>Sugar: ${data.sugar}g</p>
+      <p>Fat: ${data.fat}g</p>
+
+      <p>Health Score:
+        <span class="${score > 6 ? 'good' : 'bad'}">
+          ${score}/10
+        </span>
+      </p>
+
+      <p><strong>Recommendation:</strong> ${swap}</p>
+    </div>
+  `;
+}
+
+function showCategory(type) {
+  let content = "";
+
+  if (type === "fastfood") {
+    content = "🍔 Fast food is high in calories and fats. Examples: Burger, Fries, Pizza.";
+  }
+  if (type === "healthy") {
+    content = "🥗 Healthy foods include Salad, Sushi, Yogurt — rich in nutrients and low in fats.";
+  }
+  if (type === "snacks") {
+    content = "🍫 Snacks like chocolate bars and chips are high in sugar and should be limited.";
+  }
+  if (type === "drinks") {
+    content = "🥤 Sugary drinks increase calorie intake without nutrition benefits.";
+  }
+
+  document.getElementById("modalText").innerHTML = `<h2>${content}</h2>`;
+  document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
 </body>
 </html>
