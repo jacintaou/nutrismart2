@@ -1,110 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Contact - NutriSmart</title>
+  <title>Contact NutriFlow</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  Contact & Support - NutriSmart
-</header>
+<div class="navbar">
+  <div class="logo">Nutri<span>Flow</span></div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="analyser.html">Analyse</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="mealplanner.html">Meal Plan</a>
+    <a href="about.html">About</a>
+  </div>
+</div>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="analyse.html">Analyse Food</a>
-  <a href="meal.html">Meal Planner</a>
-  <a href="dashboard.html">Dashboard</a>
-  <a href="about.html">About</a>
-</nav>
+<section class="section">
 
-<!-- INTRO -->
-<div class="section">
+  <h1>Contact & Support</h1>
 
   <div class="card">
-    <h2>📩 Get in Touch</h2>
     <p>
-      This contact system allows users to submit enquiries, feedback, and technical issues related to the NutriSmart platform.
-    </p>
-    <p>
-      Responses are used to improve system functionality and user experience.
+      Use this page to reach out for feedback, project inquiries, collaboration requests,
+      or questions about nutrition insights provided by NutriFlow.
     </p>
   </div>
 
-</div>
+</section>
 
-<!-- CONTACT FORM -->
-<div class="section">
+<section class="section">
 
-  <div class="card">
+  <h2>Reason for Contact</h2>
 
-    <h2>🧾 Submit an Enquiry</h2>
-
-    <input type="text" placeholder="Full Name">
-
-    <input type="email" placeholder="Email Address">
+  <div class="box">
 
     <select>
-      <option>General Inquiry</option>
-      <option>Feedback on Food Analysis Tool</option>
-      <option>Meal Planner Issue</option>
-      <option>Dashboard Data Question</option>
+      <option>General Feedback</option>
+      <option>Nutrition Question</option>
+      <option>School / Project Inquiry</option>
+      <option>Feature Suggestion</option>
       <option>Bug Report</option>
-      <option>School Assessment Question</option>
     </select>
-
-    <select>
-      <option>Priority Level: Low</option>
-      <option>Priority Level: Medium</option>
-      <option>Priority Level: High</option>
-    </select>
-
-    <input type="text" placeholder="Subject">
-
-    <textarea placeholder="Describe your enquiry..." style="width:100%; height:120px; margin-top:10px; border-radius:10px;"></textarea>
-
-    <button onclick="submitForm()">Submit Enquiry</button>
-
-    <p id="responseMessage"></p>
 
   </div>
 
-</div>
+</section>
 
-<!-- SUPPORT INFO -->
-<div class="section">
+<section class="section">
+
+  <h2>Send a Message</h2>
+
+  <div class="box">
+
+    <input placeholder="Your Name" style="padding:10px; width:100%; margin-bottom:10px;">
+    <input placeholder="Your Email" style="padding:10px; width:100%; margin-bottom:10px;">
+    <textarea placeholder="Your Message" style="padding:10px; width:100%; height:120px;"></textarea>
+
+    <button style="margin-top:10px;">Send Message</button>
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <h2>Why We Collect Feedback</h2>
 
   <div class="card">
-    <h2>🧠 Support Information</h2>
-
     <p>
-      NutriSmart is designed as an educational prototype system. All feedback is used to simulate real-world enterprise development processes.
+      Feedback is essential for improving nutritional accuracy, usability,
+      and accessibility. NutriFlow is designed as an evolving system that adapts
+      based on user interaction and real-world dietary needs.
     </p>
-
-    <p>
-      Typical response areas include:
-    </p>
-
-    <p>
-      • System improvements<br>
-      • Feature requests<br>
-      • Nutrition database updates<br>
-      • UI/UX enhancements
-    </p>
-
   </div>
 
-</div>
+</section>
 
-<!-- SCRIPT -->
-<script>
-function submitForm() {
-  document.getElementById("responseMessage").innerHTML =
-    "✅ Thank you! Your enquiry has been submitted successfully.";
-}
-</script>
+<footer>
+  © 2026 NutriFlow — Supporting better food decisions
+</footer>
 
 </body>
 </html>
